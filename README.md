@@ -2,40 +2,26 @@
 Modelling budding yeast cell cycle using a deterministc model and a "hybrid" stochastic petri net model.
 ![Hybrid Stochastic Petri Net of all variables.](/img/SPN_completo.png)
 
-+-- _config.yml
-+-- _drafts
-|   +-- begin-with-the-crazy-ideas.textile
-|   +-- on-simplicity-in-technology.markdown
-+-- _includes
-|   +-- footer.html
-|   +-- header.html
-+-- _layouts
-|   +-- default.html
-|   +-- post.html
-+-- _posts
-|   +-- 2007-10-29-why-every-programmer-should-play-nethack.textile
-|   +-- 2009-04-26-barcamp-boston-4-roundup.textile
-+-- _data
-|   +-- members.yml
-+-- _site
-+-- index.html
+### Repo structure:
+```bash
+├── deterministic
+│   ├── Main_Tyson_Novak_det.m
+│   ├── Tyson_Novak_det.m
+│   ├── Tyson_Novak_det_variables_checkpoints.m
+├── hybrid_stochastic_petri_net
+│   ├── HSPN.py
+├── img
+│   ├── various image files
+├── README.md
+```
 
 
- % questi li metti ognuno nella relativa cartella
-# Deterministic Model [fonte]
+The deterministic model is in Matlab, while the stochastic is in Python 3.7
 
-## Matlab script: input, output.
+# References:
 
-# Stochastic Model (based on [fonte])
-
-## Gillespie algorithm
-
-## how to handle mass in the stochastic model
-
-## Python script: input, output
-
-
-%% ORGanizzazione cartelle
+Tyson, John J., and Bela Novak. "Regulation of the eukaryotic cell cycle: molecular antagonism, hysteresis, and irreversible transitions." Journal of theoretical biology 210.2 (2001): 249-263.
+Mura, Ivan, and Attila Csikász-Nagy. "Stochastic Petri Net extension of a yeast cell cycle model." Journal of theoretical biology 254.4 (2008): 850-860.
 
 # Credits:
 This project was written by me (Lorenzo Federico Signorini), Marco Giulini, and Nicole Salvatori for our Mathematical Modelling course in the MSc in Quantitative and Computational Biology at the University of Trento, Italy, in February 2018.
