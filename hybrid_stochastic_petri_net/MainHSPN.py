@@ -11,14 +11,15 @@ from random import *
 import numpy as np
 from math import *
 
-##############################################################################################################################
-#  Hybrid Stochastic Petri Net initialization
-#
-# This Petri Net, N, is defined as a set such that:
-# N = [P, ordered_places_list, T, Pre, Post, p, r, m, cycb]
-# where P = places+markings; T = transitions; Pre; Post; p=parameters( aka 'propensities'); r=rates; m=mass
-##############################################################################################################################
-def initialize_hybrid_stochastic_petri_net():
+#############################################
+#        PETRI NET INITIALIZATION
+#############################################
+
+def initialize_petri_net():
+	# This Petri Net, N, is defined as a set such that (see book for reference):
+        # N = [P, ordered_places_list, T, Pre, Post, p, r, m, cycb]
+        # where P = places+markings; T = transitions; Pre; Post; p=parameters( aka 'propensities'); r=rates; m=mass
+        
 	# Initial state:
 	P = {'cycb_T':97, 'CDH1_I':418, 'CDH1_A':5.0, 'CDC20_I':24, 'CDC20_A':0, 'IE_I':384, 'IE_A':40, 'CKI_T':25, 'SK':39, 'TF_I':408, 'TF_A':15} #11 species (+ cycb) inital state ('marking') 
 	ordered_places_list = ['cycb_T','CDH1_I','CDH1_A','CDC20_I','CDC20_A','IE_I','IE_A','CKI_T','SK', 'TF_I', 'TF_A']
@@ -128,9 +129,10 @@ def initialize_hybrid_stochastic_petri_net():
 
 	return P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 
-##############################################################################################################################
-#  Utility Functions (all called inside Gillespie algorithm) :
-##############################################################################################################################
+#############################################
+# UTILITY FUNCTIONS (all called inside 
+# Gillespie algorithm) :
+#############################################
 
 def init_X(u, N_max, ordered_places_list):
 	'''Creates a u* N_max matrix to store values of tokens of all the u species, for N_max iterations of Gillespie algorithm'''
@@ -200,9 +202,9 @@ def prints(x,m,t,cycb,alpha,low):
 	print("time : " , t)
 	return
 
-###################
-# Plotting function
-###################
+#############################################
+#             PLOTTING FUNCTION
+#############################################
 
 def my_plot(X, P, T_tot, CYCB, M, ordered_places_list):
 	'''Plots stuff'''
@@ -214,9 +216,9 @@ def my_plot(X, P, T_tot, CYCB, M, ordered_places_list):
 	plt.show()
 	return
 
-###########################
-# GILLESPIE ALGORITHM CYCLE
-###########################
+#############################################
+#          GILLESPIE ALGORITHM CYCLE
+#############################################
 
 # note: passing p is actually useless, since all parameters are defined as global variables.
 
@@ -273,11 +275,12 @@ def gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 		tp+=1
 	return X, T_tot, CYCB, M
 
-##################
-# Execute program:
-##################
+#############################################
+#             EXECUTE PROGRAM               
+#############################################
 
-N_max = input("\n>Define the number of iterations you would like to simulate...\n-> 1244567*3 iterations are around 1400 time units\n")
-P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass = initialize_hybrid_stochastic_petri_net()
-X, T_tot, CYCB, M = gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass)
-my_plot(X, P, T_tot, CYCB, M, ordered_places_list)
+if __name__ == "__main__":
+	N_max = input("\n>Define the number of iterations you would like to simulate...\n-> 1244567*3 iterations are around 1400 time units\n")
+	P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass = initialize_petri_net()
+	X, T_tot, CYCB, M = gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass)
+	my_plot(X, P, T_tot, CYCB, M, ordered_places_list)
