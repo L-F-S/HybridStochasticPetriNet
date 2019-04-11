@@ -45,7 +45,8 @@ k162 = 3;
 J_sixteen = 0.01;
 keq = 1000;
 
-%%variables
+% variables:
+
 m = x(1);
 CycBt = x(2);
 Cdh1a= x(3);
@@ -57,14 +58,15 @@ SK = x(8);
 TF = x(9);
 Cyc_B = CycBt - 2*CycBt*CKIt/((CycBt + CKIt + keq^-1)+sqrt((CycBt + CKIt + keq^-1)^2 -4*CycBt*CKIt));
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%  DIFFERENTIAL EQUATIONS
+%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%  DIFFERENTIAL EQUATIONS   %%%%%
-
-%%% MASS EQUATION
+% MASS EQUATION:
 
 m_dt = mu*m*(1-m/ms);
 
-%%% CELL NETWORK EQUATIONS
+% CELL NETWORK EQUATIONS:
 
 CycBt_dt = k1 - (k21 + k22*Cdh1a + k23*Cdc20a)*CycBt;
 Cdh1a_dt = (k31 + k32*Cdc20a)*(1-Cdh1a)/(J_three +1 -Cdh1a) - (k41*m*Cyc_B + k42*SK)*Cdh1a/(J_four+ Cdh1a);
@@ -74,8 +76,6 @@ IEP_dt = k9*m*Cyc_B*(1-IEP)-k10*IEP;
 CKIt_dt = k11 - (k121+k122*SK+k123*m*Cyc_B)*CKIt;
 SK_dt = k131 + k132*TF -k14*SK;
 TF_dt = (k151*m +k152*SK)*(1-TF)/(J_fifteen+1-TF)-(k161+k162*m*Cyc_B)*TF/(J_sixteen+TF); 
-
-% xdt
-
+%------------------------------------------------------------------------------------------------------------
 xdt = [m_dt;CycBt_dt;Cdh1a_dt;Cdc20t_dt;Cdc20a_dt;IEP_dt;CKIt_dt;SK_dt;TF_dt]; 
 end
