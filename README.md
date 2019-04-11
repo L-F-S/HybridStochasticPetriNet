@@ -15,8 +15,15 @@ Modelling budding yeast cell cycle using a deterministc model and a "hybrid" sto
 ├── README.md
 ```
 
+# Determinisitic model
 
-The deterministic model is in Matlab, while the stochastic is in Python 3.7
+The deterministic model is written in Matlab and should be run from inside Matlab from the Main_tyson_novak_det.m
+
+# 'hybrid' stochastic model
+The hybrid stochastic petri net is written in Python 3.7. To run:
+```bash
+python HSPN.py
+```
 
 # References:
 
@@ -24,4 +31,4 @@ The deterministic model is in Matlab, while the stochastic is in Python 3.7
 * Mura, Ivan, and Attila Csikász-Nagy. "Stochastic Petri Net extension of a yeast cell cycle model." Journal of theoretical biology 254.4 (2008): 850-860.
 
 # Credits:
-This project was written by me (Lorenzo Federico Signorini), Marco Giulini, and Nicole Salvatori for our Mathematical Modelling course in the MSc in Quantitative and Computational Biology at the University of Trento, Italy, in February 2018.
+This project was written by me (Lorenzo Federico Signorini), Marco Giulini, and Nicole Salvatori for our Mathematical Modelling course in the MSc in Quantitative and Computational Biology at the University of Trento, Italy, in January 2018.
