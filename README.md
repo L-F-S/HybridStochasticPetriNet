@@ -1,5 +1,5 @@
 # HybridStochasticPetriNet
-Modelling budding yeast cell cycle using a deterministc model and a "hybrid stochastic petri net" model
+Modelling budding yeast cell cycle using a deterministc model and a "hybrid" stochastic petri net model
 [immagine grande della cosa stocastica]
 
 # Budding yeast cell cycle [fonte]
@@ -19,4 +19,4 @@ Modelling budding yeast cell cycle using a deterministc model and a "hybrid stoc
 ## Python script: input, output
 
 # Credits:
-Marco Giulini, Nicole Salvatori, Lorenzo Federico Signorini
+This project was written by me (Lorenzo Federico Signorini), Marco Giulini, and Nicole Salvatori for our Mathematical Modelling course in the MSc in Quantitative and Computational Biology at the University of Trento, Italy, in February 2018.
