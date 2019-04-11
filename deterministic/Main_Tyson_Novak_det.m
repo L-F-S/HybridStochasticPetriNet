@@ -1,9 +1,10 @@
 
-%29/12/2017, 01:40%    
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  Tyson and Novak 2002 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- 
+% 29/12/2017, 01:40%    
+% Reproduction of  budding yeast model by Tyson and Novak, 2002.
+%
+% Author: Lorenzo Federico Signorini
+%
+
 clc
 clear all
 close all
