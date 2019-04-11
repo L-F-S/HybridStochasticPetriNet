@@ -1,3 +1,8 @@
+% Reproduction of  budding yeast model by Tyson and Novak, 2002.
+%
+% Author: Lorenzo Federico Signorini
+%
+
 function xdt= Tyson_Novak_det (t, x)
 
 %%parameters
@@ -29,7 +34,7 @@ k121 = 0.2;
 k122 = 50;
 k123 = 100;
 k131 = 0;
-k132 = 1;  %SK- mutant: k131, k132 = 0 (k131 Ë gi‡ = 0) funge
+k132 = 1;  %SK- mutant: k131, k132 = 0 (k131 √® gi√† = 0) funge
 k14 = 1;
 k151 = 1.5;
 k152 = 0.05;
