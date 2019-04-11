@@ -5,7 +5,7 @@
 
 function xdt= Tyson_Novak_det (t, x)
 
-%%parameters
+% parameters:
 mu = 0.01;   
 ms = 10.0;
 k1 = 0.04;   
