@@ -140,7 +140,7 @@ def initialize_petri_net():
 	# First cycle:
 	alpha, k1, k21, k22, k23 = 0.00236012, 0.04, 0.04, 1.0, 1.0  # cycb- mutant: k1 = 0. 03 , k22 = 0, k23 = 0.2
 	# Second cycle:
-	k31, k32, k41, k42, J_three, J_four, init_mass, keq = 1.0 , 10.0, 35.0, 2.0, 0.04,  0.04, 0.704045,  1000.0 
+	k31, k32, k41, k42, J_three, J_four, init_mass, keq = 1.0 , 10.0, 35.0, 2.0, 0.04,  0.04, 0.704045,  1000.0  # note: k41 was called k4 and k42 was called k4' in original paper.
 	# Third cycle:
 	k51 , k52 , J_five , n_exp , k6 =  0.0050, 0.2 , 0.3 , 4.0 , 0.1 
 	# Fourth cycle:
