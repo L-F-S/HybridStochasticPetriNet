@@ -1,3 +1,8 @@
+% Reproduction of  budding yeast model by Tyson and Novak, 2002.
+%
+% Author: Lorenzo Federico Signorini
+%
+
 function[value,isterminal,direction] = Tyson_Novak_det_variables_checkpoints(t,x)
 keq=1000;
 %% variables
