@@ -1,6 +1,6 @@
 # HybridStochasticPetriNet
 Modelling budding yeast cell cycle using a deterministc model and a "hybrid" stochastic petri net model
-[/img/SPN_completo.png]
+![Hybrid Stochastic Petri Net of all variables.](/img/SPN_completo.png)
 
 
 # Budding yeast cell cycle [fonte]
