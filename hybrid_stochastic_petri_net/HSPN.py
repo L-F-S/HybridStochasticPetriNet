@@ -1,6 +1,6 @@
 ############################################################################################################################
 # 10/01/2018
-# Reproduction of Stochasti Petri Net (SPN) model of Mura and Nagy, 2008, with the addition of DETERMINISTIC evolution
+# Reproduction of Stochastic Petri Net (SPN) model of Mura and Nagy, 2008, with the addition of DETERMINISTIC evolution
 # for the mass.
 #
 # Author: Lorenzo Federico Signorini
