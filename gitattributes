@@ -1,0 +1,3 @@
+**/*.m linguist-language=MATLAB
+**/*.m  linguist-documentation=false
+**/*.m  linguist-vendored=false
