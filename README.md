@@ -29,6 +29,7 @@ python HSPN.py
 
 * Tyson, John J., and Bela Novak. "Regulation of the eukaryotic cell cycle: molecular antagonism, hysteresis, and irreversible transitions." Journal of theoretical biology 210.2 (2001): 249-263.
 * Mura, Ivan, and Attila Csikász-Nagy. "Stochastic Petri Net extension of a yeast cell cycle model." Journal of theoretical biology 254.4 (2008): 850-860.
+* Wilkinson, Darren J. Stochastic modelling for systems biology. Chapman and Hall/CRC, 2006.
 
 # Credits:
 This project was written by me (Lorenzo Federico Signorini), Marco Giulini, and Nicole Salvatori for our Mathematical Modelling course in the MSc in Quantitative and Computational Biology at the University of Trento, Italy, in January 2018.
