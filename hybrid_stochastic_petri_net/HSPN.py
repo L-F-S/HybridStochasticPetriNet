@@ -25,24 +25,24 @@ def update_rates(P,p,m):
 	
 	# cycb:
 	
-	num = 2*(pow(alpha,2))*P['cycb_T']*P['CKI_T']                             # numerator
-	sigma = alpha*P['cycb_T'] + alpha*P['CKI_T'] + pow(keq,-1)                # sigma factor
-	den = sigma + sqrt(pow(sigma,2) - 4*pow(alpha,2)*P['cycb_T']*P['CKI_T'])  # denominator
-	cycb = alpha*P['cycb_T'] - num / den
+	num = 2*(pow(p['alpha'],2))*P['cycb_T']*P['CKI_T']                             # numerator
+	sigma = p['alpha']*P['cycb_T'] + p['alpha']*P['CKI_T'] + pow(p['keq'],-1)                # sigma factor
+	den = sigma + np.sqrt(pow(sigma,2) - 4*pow(p['alpha'],2)*P['cycb_T']*P['CKI_T'])  # denominator
+	cycb = p['alpha']*P['cycb_T'] - num / den
 
 	# Rates:
 	
-	r= np.array([k1/alpha, k21*P['cycb_T'], k22*P['CDH1_A']*P['cycb_T']*alpha ,  k23*P['CDC20_A']*P['cycb_T']*alpha,\
-		     k31*P['CDH1_I']/(J_three + P['CDH1_I']*alpha),\
-		     k32*P['CDC20_A']*P['CDH1_I']*alpha/(J_three + P['CDH1_I']*alpha),\
-		     k41*m*cycb*P['CDH1_A']/(J_four + P['CDH1_A']*alpha) ,(k42 * P['SK'] * P['CDH1_A']) * alpha/\
-		     (J_four + P['CDH1_A']*alpha), k51/alpha, (k52*(pow(m*cycb,n_exp))/(pow(J_five,n_exp) + pow(m*cycb,n_exp)))\
-		     /alpha , k6*P['CDC20_I'],k7*P['IE_A']*P['CDC20_I']*alpha/(J_seven + P['CDC20_I']*alpha) ,\
-		     alpha*k8*P['CDC20_A']/(J_eight + P['CDC20_A']*alpha), k6*P['CDC20_A'], k9*m*cycb*P['IE_I'] ,\
-		     k10*P['IE_A'], k11/alpha , k121*P['CKI_T'] , k122*P['SK']*P['CKI_T']*alpha , k123*m*cycb*P['CKI_T'],\
-			k131/alpha , k132*P['TF_A'] , k14*P['SK'], k151*m*P['TF_I']/(J_fifteen + P['TF_I']*alpha),\
-		     k152*P['SK']*P['TF_I']*alpha/(J_fifteen + P['TF_I']*alpha), k161*P['TF_A']/(J_sixteen + P['TF_A']*alpha),\
-		     k162*m*cycb*P['TF_A']/(J_sixteen + P['TF_A']*alpha)])
+	r= np.array([p['k1']/p['alpha'], p['k21']*P['cycb_T'], p['k22']*P['CDH1_A']*P['cycb_T']*p['alpha'] ,  p['k23']*P['CDC20_A']*P['cycb_T']*p['alpha'],\
+		     p['k31']*P['CDH1_I']/(p['J_three'] + P['CDH1_I']*p['alpha']),\
+		     p['k32']*P['CDC20_A']*P['CDH1_I']*p['alpha']/(p['J_three'] + P['CDH1_I']*p['alpha']),\
+		     p['k41']*m*cycb*P['CDH1_A']/(p['J_four'] + P['CDH1_A']*p['alpha']) ,(p['k42'] * P['SK'] * P['CDH1_A']) * p['alpha']/\
+		     (p['J_four'] + P['CDH1_A']*p['alpha']), p['k51']/p['alpha'], (p['k52']*(pow(m*cycb,p['n_exp']))/(pow(p['J_five'],p['n_exp']) + pow(m*cycb,p['n_exp'])))\
+		     /p['alpha'] , p['k6']*P['CDC20_I'],p['k7']*P['IE_A']*P['CDC20_I']*p['alpha']/(p['J_seven'] + P['CDC20_I']*p['alpha']) ,\
+		     p['alpha']*p['k8']*P['CDC20_A']/(p['J_eight'] + P['CDC20_A']*p['alpha']), p['k6']*P['CDC20_A'], p['k9']*m*cycb*P['IE_I'] ,\
+		     p['k10']*P['IE_A'], p['k11']/p['alpha'] , p['k121']*P['CKI_T'] , p['k122']*P['SK']*P['CKI_T']*p['alpha'] , p['k123']*m*cycb*P['CKI_T'],\
+			p['k131']/p['alpha'] , p['k132']*P['TF_A'], p['k14']*P['SK'], p['k151']*m*P['TF_I']/(p['J_fifteen'] + P['TF_I']*p['alpha']),\
+		     p['k152']*P['SK']*P['TF_I']*p['alpha']/(p['J_fifteen'] + P['TF_I']*p['alpha']), p['k161']*P['TF_A']/(p['J_sixteen'] + P['TF_A']*p['alpha']),\
+		     p['k162']*m*cycb*P['TF_A']/(p['J_sixteen'] + P['TF_A']*p['alpha'])])
 	return r, cycb
 
 
@@ -59,8 +59,7 @@ def init_X(u, N_max, ordered_places_list):
 def update_P(new_values,P, ordered_places_list):
 	# Updates the current markings of P with the newly calculated ones.
 	
-	for i in range(len(new_values)): ## TODO DICTIONARIES ARE NOT SORTED DIOCANE!! quindi l'indice quando prendo le keys del dizionario chissa' se le prendo in ordine! magari si, ma magari no!
-		key = ordered_places_list[i]
+	for i in range(len(new_values)): ## ma i dizionari non sono sorted? quindi l'indice quando prendo le keys del dizionario chissa' se le prendo in ordine! magari si, ma magari no!
 		P[(ordered_places_list[i])] = new_values[i]
 	return P
 
@@ -77,8 +76,8 @@ def check_token(mass , curr_cycb , low):
 
 	
 def update_mass(m, p ,t , low, cycb,t_div, init_mass):
-	C = init_mass / (1- init_mass/mass_max)
-	m=(C * np.exp(mass_gr * (t-t_div) ))/(1 + (C/mass_max)*np.exp(mass_gr * (t-t_div)))
+	C = init_mass / (1- init_mass/p['mass_max'])
+	m=(C * np.exp(p['mass_gr'] * (t-t_div) ))/(1 + (C/p['mass_max'])*np.exp(p['mass_gr'] * (t-t_div)))
 	response = check_token(m , cycb, low)
 	if response == "to_high":
 		low = 0
@@ -137,7 +136,8 @@ def initialize_petri_net():
 	"t6a"  , "t7"  , "t8"  , "t6b"  , "t9"  , "t10"  , "t11" , "t121" , "t122" , "t123"  , "t131" , "t132" ,
 	"t14"  , "t151" , "t152","t161","t162") #27 transitions
         
-	# Transition propensities:
+	# Transition propensities p:
+    # (listed in extended form for the sake of clarity)
 	# First cycle:
 	alpha, k1, k21, k22, k23 = 0.00236012, 0.04, 0.04, 1.0, 1.0  # cycb- mutant: k1 = 0. 03 , k22 = 0, k23 = 0.2
 	# Second cycle:
@@ -156,9 +156,9 @@ def initialize_petri_net():
 	k151 , J_fifteen , k152 , k161 , J_sixteen , k162 = 1.5 , 0.01 , 0.05, 1.0 , 0.01 , 3.0
 	# Mass:
 	mass_gr, mass_max = 0.01, 10.0   # cycb- mutant: 
-	p = [alpha, k1, k21, k22, k23,k31, k32, k41, k42, J_three, J_four, init_mass, keq,k51 , k52 , J_five ,\
-	     n_exp , k6,k7, J_seven , k8 , J_eight,k9, k10,k11 , k121 , k122 , k123, k131, k132 , k14, k151 , J_fifteen ,\
-	     k152 , k161 , J_sixteen , k162, mass_gr, mass_max] # transition propensities
+	p = {'alpha':alpha, 'k1':k1, 'k21':k21, 'k22':k22, 'k23':k23,'k31':k31, 'k32':k32, 'k41':k41, 'k42':k42, 'J_three':J_three, 'J_four':J_four, 'init_mass':init_mass, 'keq':keq,'k51':k51 , 'k52':k52 , 'J_five':J_five ,\
+	     'n_exp':n_exp , 'k6':k6,'k7':k7, 'J_seven':J_seven , 'k8':k8 , 'J_eight':J_eight,'k9':k9, 'k10':k10,'k11':k11 , 'k121':k121 , 'k122':k122 , 'k123':k123, 'k131':k131, 'k132':k132 , 'k14':k14, 'k151':k151 , 'J_fifteen':J_fifteen ,\
+	     'k152':k152 , 'k161':k161 , 'J_sixteen':J_sixteen , 'k162':k162, 'mass_gr':mass_gr, 'mass_max':mass_max} # transition propensities
 
 	# Calculate initial cycb and transition rates:
 	r, cycb = update_rates(P,p,init_mass)                   # transition rates 
@@ -275,7 +275,7 @@ def gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 		# Printing useful info every 1000 steps:
 
 		if tp == 1000: 
-			prints(X[:,i],M[i],t,cycb, alpha, low)
+			prints(X[:,i],M[i],t,cycb, p['alpha'], low)
 			tp = 0
 		tp+=1
 	return X, T_tot, CYCB, M
@@ -287,7 +287,7 @@ def gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 
 def my_plot(X, P, T_tot, CYCB, M, ordered_places_list):
 	for i in range(len(X[:,0])): 
-		plt.plot(T_tot, X[i]*alpha , label=ordered_places_list[i])
+		plt.plot(T_tot, X[i]*p['alpha'] , label=ordered_places_list[i])
 	plt.plot(T_tot, M, label = "mass", color = "black")
 	plt.legend()
 	plt.show()
@@ -299,7 +299,7 @@ def my_plot(X, P, T_tot, CYCB, M, ordered_places_list):
 #############################################
 
 if __name__ == "__main__":
-	N_max = input("\n>Define the number of iterations you would like to simulate...\n-> 1244567*3 iterations are around 1400 time units\n")
+	N_max = int(input("\n>Define the number of iterations you would like to simulate...\n-> 1244567*3 iterations are around 1400 time units\n"))
 	P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass = initialize_petri_net()
 	X, T_tot, CYCB, M = gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass)
 	my_plot(X, P, T_tot, CYCB, M, ordered_places_list)
