@@ -248,7 +248,7 @@ def gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 		s = - np.log(rand)/r_sum
 		t = t + s
 		if t == float('nan'):
-			print t
+			print(t)
 			raise ValueError("Time 'Nan', SOMETHING IS WRONG")
 		T_tot[i] = t
 
@@ -260,7 +260,7 @@ def gillespie(P, T, Pre, Post, p, r, cycb, N_max, ordered_places_list, init_mass
 
 		pi = r/r_sum # converting rates to probabilities (normalization)
 		if len(pi[pi<0]) != 0:
-			print pi
+			print(pi)
 			raise ValueError("NEGATIVE PROBABILITIES, SOMETHING IS WRONG")
 		rand_index = np.random.choice(len(pi),p=pi) # Quasi random decision on transition
 		X, transition_has_fired = fire_transition(P, Pre, i, rand_index, X, S, ordered_places_list)
