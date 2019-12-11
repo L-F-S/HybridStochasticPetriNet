@@ -23,7 +23,7 @@ The deterministic model is written in Matlab and should be run from inside Matla
 The hybrid stochastic petri net is written in Python 3.7. 
 To run:
 ```bash
-python HSPN.py
+python HSPN.py <n_steps>
 ```
 and insert the number of steps you wish to simulate
 
